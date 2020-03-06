@@ -1,0 +1,24 @@
+.ui-demo__input {
+  display: inline-block;
+  border: 1px solid #ccc;
+  &.focus {
+    border: 1px solid #40a9ff;
+  }
+  input {
+    outline: none;
+    border: none;
+  }
+  margin: 0 10px 10px 0;
+  &.size-large input {
+    line-height: 40px;
+    font-size: 18px;
+  }
+  &.size-small input {
+    line-height: 20px;
+    font-size: 14px;
+  }
+  &.size-middle input {
+    line-height: 30px;
+    font-size: 16px;
+  }
+}

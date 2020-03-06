@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDom from 'react-dom'
 let loading = com => {
   class LoadingComponent extends com {
     constructor(props) {
@@ -12,7 +11,8 @@ let loading = com => {
       const { loading } = this.state
       return (
         <div>
-          {super.render} {loading ? 'loading....' : ''}
+            
+          {super.render()} {loading ? 'loading....' : ''}
         </div>
       )
     }
@@ -29,7 +29,7 @@ let loading = com => {
   }
   return LoadingComponent
 }
-//@loading相当于 let NewApp=loading(App)
+//@loading相当于 let NewApp=loading(App) 由于添加了装饰器，loading是继承与App，所以App是父类，loading是子类，所以{super.render()}要写在loading
 @loading
 class App extends React.Component {
   render() {
@@ -37,6 +37,9 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.showLoading()
+    setTimeout(() => {
+      this.hideLoading()
+    }, 3000)
   }
 }
 
