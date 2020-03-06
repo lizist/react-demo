@@ -29,7 +29,7 @@ let loading = com => {
   }
   return LoadingComponent
 }
-//@loading相当于 let NewApp=loading(App) 由于添加了装饰器，loading是继承与App，所以App是父类，loading是子类，所以{super.render()}要写在loading
+//@loading相当于   let NewApp=loading(App) 由于添加了装饰器，loading是继承与App，所以App是父类，loading是子类，所以{super.render()}要写在loading
 @loading
 class App extends React.Component {
   render() {
