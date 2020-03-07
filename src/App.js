@@ -3,6 +3,7 @@ import Icon from './ui-demo/icons'
 import Button from './ui-demo/button'
 import Input from './ui-demo/input'
 import Table from './ui-demo/table'
+import Parent from './pages/跨级组件'
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -79,6 +80,7 @@ class App extends React.Component {
           ]}
           dataSource={this.state.dataSource}
         />
+        <Parent />
       </div>
     )
   }
