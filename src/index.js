@@ -1,7 +1,15 @@
+/*
+ * @Author: your name
+ * @Date: 2020-03-09 16:44:34
+ * @LastEditTime: 2020-03-11 16:38:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \LieYouTemplatesd:\文档\Study\react\src\index.js
+ */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './App'
+import App from './pages/函数式组件demo'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(<App />, document.getElementById('root'))
