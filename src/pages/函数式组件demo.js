@@ -7,30 +7,30 @@
  * @FilePath: \LieYouTemplatesd:\文档\Study\react\src\pages\函数式组件.js
  */
 
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom'
 
 const Action = props => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('')
   return (
     <div>
       <input
         value={value}
         onChange={e => {
-          setValue(e.target.value);
+          setValue(e.target.value)
         }}
       />
       <button
         onClick={e => {
-          props.onAdd(value);
-          setValue("");
+          props.onAdd(value)
+          setValue('')
         }}
       >
         add
       </button>
     </div>
-  );
-};
+  )
+}
 const List = props => {
   return (
     <div>
@@ -39,7 +39,7 @@ const List = props => {
           <span>{item.name}</span>
           <button
             onClick={e => {
-              props.onDel(index);
+              props.onDel(index)
             }}
           >
             del
@@ -47,109 +47,118 @@ const List = props => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
 const App = props => {
   let [data, setData] = useState([
-    { name: "react", id: 0 },
-    { name: "vue", id: 1 }
-  ]);
+    { name: 'react', id: 0 },
+    { name: 'vue', id: 1 }
+  ])
   return (
     <div>
       <Action
         onAdd={name => {
-          data.push({ name, id: data.length });
-          setData([...data]); // 这里要结构因为data.push只是改变了data的值，没有改变data的内存地址，js判断data是没有改变的，解构是为了改变data在内存地址的指向，触发钩子函数
+          data.push({ name, id: data.length })
+          setData([...data]) // 这里要结构因为data.push只是改变了data的值，没有改变data的内存地址，js判断data是没有改变的，解构是为了改变data在内存地址的指向，触发钩子函数
         }}
       ></Action>
       <List
         data={data}
         onDel={index => {
-          data.splice(index, 1);
-          setData([...data]);
+          data.splice(index, 1)
+          setData([...data])
         }}
       ></List>
     </div>
-  );
-};
+  )
+}
 
 // 自定义hooks
 const useTitleHook = (title, setLoading) => {
   useEffect(() => {
-    document.title = title;
+    document.title = title
     setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+      setLoading(false)
+    }, 2000)
     return () => {
-      document.title = "close";
-    };
-  });
-};
+      document.title = 'close'
+    }
+  })
+}
 const Loading = () => {
-  return <div>loading</div>;
-};
-let node = "";
+  return <div>loading</div>
+}
+let node = ''
 const useLoadingDemo = isShow => {
   useEffect(() => {
     if (isShow) {
-      node = document.createElement("div");
-      document.body.appendChild(node);
-      ReactDOM.render(<Loading />, node);
+      node = document.createElement('div')
+      document.body.appendChild(node)
+      ReactDOM.render(<Loading />, node)
     } else {
-      if (node === "") return;
-      ReactDOM.unmountComponentAtNode(node);
-      document.body.removeChild(node);
+      if (node === '') return
+      ReactDOM.unmountComponentAtNode(node)
+      document.body.removeChild(node)
     }
-  });
-};
+  })
+}
 
 const App1 = () => {
-  let [title, setTitle] = useState("");
-  let [loading, setLoading] = useState(true);
+  let [title, setTitle] = useState('')
+  let [loading, setLoading] = useState(true)
 
-  useTitleHook(title, setLoading); // 通过useEffect hook来绑定数据的更新，把模块独立出来
-  useLoadingDemo(loading);
+  useTitleHook(title, setLoading) // 通过useEffect hook来绑定数据的更新，把模块独立出来
+  useLoadingDemo(loading)
 
   return (
     <div>
       <input value={title} onChange={e => setTitle(e.target.value)}></input>
     </div>
-  );
-};
+  )
+}
 
 const useFriendStatus = value => {
-  const [isOnline, setIsOnline] = useState(null);
+  const [isOnline, setIsOnline] = useState(null)
   const handleStatus = status => {
-    setIsOnline(status);
-  };
+    setIsOnline(status)
+  }
   useEffect(() => {
-    if (value === "1000") {
-      handleStatus("isOnline");
+    if (value === '1000') {
+      handleStatus('isOnline')
     } else {
-      handleStatus("noOnline");
+      handleStatus('noOnline')
     }
-    document.title = "ison";
-    console.log("ison");
+    document.title = 'ison'
+    console.log('ison')
     return () => {
-      document.title = "close";
-      console.log("close");
-      handleStatus("loading");
-    };
-  });
-  return isOnline;
-};
+      document.title = 'close'
+      console.log('close')
+      handleStatus('loading')
+    }
+  }, [value])
+  return isOnline
+}
 
 const App2 = () => {
-  let [value, setValue] = useState("");
-  let [set, setSet] = useState(true);
-  let isOnline = useFriendStatus(value);
+  let [value, setValue] = useState('')
+  let isOnline = useFriendStatus(value)
   return (
     <div>
       {isOnline}
       <input value={value} onChange={e => setValue(e.target.value)}></input>
     </div>
-  );
-};
+  )
+}
 
-export default App2;
+const App3 = () => {
+  let [show, setShow] = useState(true)
+  return (
+    <div>
+      {show && <App2></App2>}
+      <button onClick={e => setShow(!show)}>change</button>
+    </div>
+  )
+}
+
+export default App3

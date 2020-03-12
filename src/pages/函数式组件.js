@@ -19,7 +19,7 @@ const App = props => {
     return()=>{
       console.log('status clear')// 对应class组件的componentWillUnMount 组件将被销毁
     }
-  },[time])// 第二个参数是控制userEffect 在哪些数据发生改变的时候才去触发函数
+  },[time])// 第二个参数是控制userEffect 在哪些数据发生改变的时候才去触发函数，相当于componentShouldUpdate
   return (
     <div>
       {time}
