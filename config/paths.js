@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-03-09 16:44:34
+ * @LastEditTime: 2020-03-13 17:17:33
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \LieYouTemplatesd:\文档\Study\react\config\paths.js
+ */
 'use strict';
 
 const path = require('path');
@@ -55,7 +63,7 @@ module.exports = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appIndexJs: resolveModule(resolveApp, 'src/redux-demo/index'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
