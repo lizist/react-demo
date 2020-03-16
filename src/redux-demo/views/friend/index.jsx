@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addList ,delItem} from '../../actions/friend'
+import { addList, delItem } from '../../actions/friend'
 
 class friend extends React.Component {
     constructor(props) {
@@ -19,10 +19,10 @@ class friend extends React.Component {
         return (
             <div>
                 {friendList.map((item, index) =>
-                    <div>
-                        <p key={index}>{item}</p>
+                    <div key={item.id}>
+                        <p>{item.name}</p>
                         <button onClick={() => {
-                            delItem(index)
+                            delItem(item.id)
                         }}>del</button>
                     </div>
                 )}
@@ -30,7 +30,7 @@ class friend extends React.Component {
                     this.setState({ value: e.target.value })
                 }} />
                 <button onClick={(e) => {
-                    addList(value)
+                    addList({ name: value, id: friendList.length })
                     this.setState({ value: '' })
                 }}>add</button>
             </div>
