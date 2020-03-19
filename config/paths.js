@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-03-09 16:44:34
- * @LastEditTime: 2020-03-13 17:17:33
- * @LastEditors: your name
+ * @LastEditTime: 2020-03-19 17:49:47
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \LieYouTemplatesd:\文档\Study\react\config\paths.js
  */
@@ -63,7 +63,7 @@ module.exports = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/mobx-demo/index'),
+  appIndexJs: resolveModule(resolveApp, 'src/index'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
