@@ -12,43 +12,35 @@ import { observable } from "mobx";
 @inject("post")
 @observer
 class Friend extends Component {
-  @observable title = "";
-  @observable content = "";
-  @observable friendId = "";
-
   render() {
     let { post } = this.props;
     return (
       <div>
         <div>
           <input
-            value={this.title}
+            value={post.addForm.title}
             placeholder="请输入标题"
-            onChange={e => (this.title = e.target.value)}
+            onChange={e => (post.addForm.title = e.target.value)}
           />
         </div>
         <div>
           <input
-            value={this.content}
+            value={post.addForm.content}
             placeholder="请输入内容"
-            onChange={e => (this.content = e.target.value)}
+            onChange={e => (post.addForm.content = e.target.value)}
           />
         </div>
         <div>
           <input
             type="number"
-            value={this.friendId}
+            value={post.addForm.friendId}
             placeholder="请输入好友id"
-            onChange={e => (this.friendId = parseInt(e.target.value))}
+            onChange={e => (post.addForm.friendId = parseInt(e.target.value))}
           />
         </div>
         <button
           onClick={() => {
-            post.addPost({
-              title: this.title,
-              content: this.content,
-              friendId: this.friendId
-            });
+            post.addPost();
           }}
         >
           添加

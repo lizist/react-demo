@@ -6,11 +6,14 @@
  * @Description: In User Settings Edit
  * @FilePath: \LieYouTemplatesd:\文档\Study\react\src\mobx-demo\views\friend\index.js
  */
-import React, { Component } from "react";
-import "../../assets/friend.scss";
+import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
+import '../../assets/friend.scss'
+@observer
+@inject('friend')
 class Friend extends Component {
   render() {
-    let { friend } = this.props;
+    let { friend } = this.props
     return (
       <div>
         {friend.list.map(item => {
@@ -20,15 +23,15 @@ class Friend extends Component {
               key={item.id}
               onClick={e => {
                 console.log(item.id)
-                friend.activeId = item.id;
+                friend.activeId = item.id
               }}
             >
               {item.name}
             </span>
-          );
+          )
         })}
       </div>
-    );
+    )
   }
 }
-export default Friend;
+export default Friend

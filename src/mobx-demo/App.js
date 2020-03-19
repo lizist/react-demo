@@ -6,27 +6,27 @@
  * @Description: In User Settings Edit
  * @FilePath: \LieYouTemplatesd:\文档\Study\react\src\mobx-demo\App.js
  */
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import Friend from "./views/friend";
-import Post from "./views/post";
-import Acrion from "./views/action";
-@inject("friend", "post") // 注入响应式变量
+import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
+import Friend from './views/friend'
+import Post from './views/post'
+import Acrion from './views/action'
+@inject('friend', 'post') // 注入响应式变量
 @observer // 用装饰器把组件装饰成响应式组件
 class App extends Component {
-  
   render() {
-    const { friend, post } = this.props;
+    const { friend, post } = this.props
     return (
       <div>
         <div>
           {friend.list.length}
-          <Friend friend={friend}></Friend>
-          <Post friendPost={friend.friendPost}></Post>
-          <Acrion/>
+          {post.list.length}
+          <Friend></Friend>
+          <Post></Post>
+          <Acrion />
         </div>
       </div>
-    );
+    )
   }
 }
-export default App;
+export default App

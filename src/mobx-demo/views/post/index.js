@@ -6,32 +6,32 @@
  * @Description: In User Settings Edit
  * @FilePath: \LieYouTemplatesd:\文档\Study\react\src\mobx-demo\views\friend\index.js
  */
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-@inject("post")
+import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
+@inject('post', 'friend')
 @observer
 class Post extends Component {
   render() {
-    const { friendPost, post } = this.props;
+    const { friend, post } = this.props
     return (
       <div>
-        {friendPost.map(item => {
+        {friend.friendPost.map(item => {
           return (
             <div key={item.id}>
               <p>{item.title}</p>
               <p>{item.content}</p>
               <button
                 onClick={() => {
-                  post.delItem(item.id);
+                  post.delItem(item.id)
                 }}
               >
                 del
               </button>
             </div>
-          );
+          )
         })}
       </div>
-    );
+    )
   }
 }
-export default Post;
+export default Post
